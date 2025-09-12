@@ -2,6 +2,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Play, Pause, Download, ChevronDown } from 'lucide-react';
 
+
 interface VoiceOption {
     id: string;
     name: string;
@@ -29,6 +30,7 @@ const VoiceGeneratorUI: React.FC = () => {
     const [audioUrl, setAudioUrl] = useState<string | null>(null);
 
     const audioRef = useRef<HTMLAudioElement>(null);
+   const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
     const voiceOptions: VoiceOption[] = [
         { id: 'samara', name: 'Samara', avatar: '🌊', description: 'Narrate a story', color: 'bg-blue-100 text-blue-800' },
@@ -72,13 +74,15 @@ const VoiceGeneratorUI: React.FC = () => {
         setIsLoading(true);
         try {
             await new Promise(resolve => setTimeout(resolve, 1500));
-            const response = await fetch(` http://localhost:5000/api/audio/${selectedLanguage}`);
+            
+
+            const response = await fetch(`${backendUrl}/api/audio/${selectedLanguage}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const data = await response.json();
-            console.log(data);
+          
             const testAudioUrl = data.audioUrl;
             setAudioUrl(testAudioUrl);
             if (audioRef.current) {

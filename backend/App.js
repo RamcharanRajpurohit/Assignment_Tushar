@@ -7,11 +7,11 @@ const errorHandler = require('./middleware/errorHandler');
 const Audio = require('./models/audio.model');
 
 const app = express();
-
+const frontendUrl = process.env.FRONTENDURL;
 // Middleware
 app.use(
   cors({
-    origin: ['http://localhost:3000', 'https://yourdomain.vercel.app'],
+    origin: [frontendUrl],
     credentials: true,
   })
 );
@@ -47,7 +47,7 @@ app.use((req, res) => {
 if (require.main === module) {
   const PORT = process.env.PORT || 5000;
   app.listen(PORT, () => {
-    console.log(`🚀 Server running at http://localhost:${PORT}`);
+
   });
 }
 
