@@ -1,10 +1,10 @@
 // api/index.js - Main entry point
 const express = require('express');
 const cors = require('cors');
-const connectDB = require('../config/database');
-const audioRoutes = require('../routes/audio.routes');
-const errorHandler = require('../middleware/errorHandler');
-const Audio = require('../models/audio.model');
+const connectDB = require('./config/database');
+const audioRoutes = require('./routes/audio.routes');
+const errorHandler = require('./middleware/errorHandler');
+const Audio = require('./models/audio.model');
 
 const app = express();
 const frontendUrl = process.env.FRONTENDURL;
