@@ -1,3 +1,4 @@
+import { LucideIcon, LucideProps } from "lucide-react";
 export interface VoiceOption {
   id: string;
   name: string;
@@ -15,5 +16,5 @@ export interface LanguageOption {
 export interface FeatureOption {
   id: string;
   label: string;
-  icon: any; // LucideIcon type
+  icon: LucideIcon; // LucideIcon type
 }
