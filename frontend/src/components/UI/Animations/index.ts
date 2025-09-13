@@ -1,1 +1,0 @@
-export { FadeInUp } from './FadeInUp';
